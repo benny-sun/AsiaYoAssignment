@@ -47,7 +47,7 @@ limit 10;
     ```
 2. 進入 `/docker` 目錄，啟動 docker containers
     ```shell
-    cd AsiaYoAssignment/docker && docker-compose up -d --build
+    cd ./AsiaYoAssignment/docker && docker-compose up -d --build && docker-compose exec asiayo-php bash -c "cp .env.example .env && composer install"
     ```
 3. 域名為 `localhost:8080`，以 curl 為例，使用 JSON Type 訪問 `POST /api/orders` endpoint:
     ```shell
