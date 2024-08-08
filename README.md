@@ -58,7 +58,7 @@ limit 10;
 
 ```mermaid
 sequenceDiagram
-    participant OrderController as OrderTransformRequest<br>處理HTTP請求及回應
+    participant OrderController as OrderController<br>處理HTTP請求及回應
     participant OrderTransformRequest as OrderTransformRequest<br>驗證請求參數
     participant TransformOrderService as TransformOrderService<br>訂單幣別轉換
     participant CheckOrderFormatService as CheckOrderFormatService<br>訂單格式檢查
