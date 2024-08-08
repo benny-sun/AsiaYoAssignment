@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\CheckOrderFormatService;
+use App\Services\CurrencyConverterService;
 use App\Services\OrderCheckers\CurrencyChecker;
 use App\Services\OrderCheckers\NameChecker;
 use App\Services\OrderCheckers\OrderCheckable;
@@ -20,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(OrderCheckable::class, function (Application $app) {
             return collect([
                 new NameChecker(),
-                new PriceChecker(),
+                new PriceChecker(new CurrencyConverterService()),
                 new CurrencyChecker(),
             ]);
         });

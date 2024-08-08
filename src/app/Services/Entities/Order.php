@@ -2,7 +2,7 @@
 
 namespace App\Services\Entities;
 
-use App\Services\Enums\Currency;
+use App\Services\Currency\Currency;
 use App\Services\ValueObjects\Address;
 use Illuminate\Contracts\Support\Arrayable;
 
@@ -26,21 +26,19 @@ class Order implements Arrayable
         return $this->price;
     }
 
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
     public function getCurrency(): Currency
     {
         return $this->currency;
     }
 
-    public function setCurrency(Currency $newCurrency): void
+    public function setCurrency(Currency $currency): void
     {
-        // convert the current price to TWD
-        $priceTWD = $this->price * $this->currency->rate();
-
-        // calculate the new price in the target currency
-        $this->price = $priceTWD / $newCurrency->rate();
-
-        // update the currency
-        $this->currency = $newCurrency;
+        $this->currency = $currency;
     }
 
     public function toArray(): array
@@ -50,7 +48,7 @@ class Order implements Arrayable
             'name' => $this->name,
             'address' => $this->address->toArray(),
             'price' => $this->price,
-            'currency' => $this->currency,
+            'currency' => $this->currency->code(),
         ];
     }
 }

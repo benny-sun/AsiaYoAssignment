@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderTransformRequest;
+use App\Services\Currency\CurrencyFactory;
 use App\Services\Entities\Order;
-use App\Services\Enums\Currency;
 use App\Services\TransformOrderService;
 use App\Services\ValueObjects\Address;
 use Illuminate\Http\Response;
@@ -33,7 +33,7 @@ class OrderController extends Controller
                 street: $request->input('address.street')
             ),
             price: (float) $request->input('price'),
-            currency: Currency::fromString($request->input('currency')),
+            currency: CurrencyFactory::create($request->input('currency')),
         );
     }
 }
