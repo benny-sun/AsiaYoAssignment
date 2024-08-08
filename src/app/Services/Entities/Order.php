@@ -21,7 +21,7 @@ class Order implements Arrayable
         return $this->name;
     }
 
-    public function getPrice(): string
+    public function getPrice(): float
     {
         return $this->price;
     }
