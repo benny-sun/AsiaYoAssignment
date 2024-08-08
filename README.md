@@ -89,11 +89,13 @@ sequenceDiagram
 ### Testing
 
 - Feature Tests
-    - Directory: `/src/tests/Feature`
-    - 針對 API endpoint 測試，包含本測驗的所有情境
-    - 測試資料位於 `/src/tests/Feature/DataProviders/`
+  - Directory: `/src/tests/Feature`
+  - 針對 API endpoint 測試，包含本測驗的所有情境
+  - 測試資料位於 `/src/tests/Feature/DataProviders/`
 - Unit Tests:
   - Directory: `/src/tests/Unit`
+  - 包含訂單格式檢查，以及貨幣格式轉換的單元測試
+  - 測試資料位於每個 Unit Test 檔案中
 
 ### Code Coverage Report
 
